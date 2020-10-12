@@ -1,46 +1,57 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
+
 //    change stations
     @Test
     void changeOnNextRadioStations() {
         Radio stations = new Radio();
-        stations.currentRadioStationNumber = 1;
-        stations.maxRadioStation = 9;
-        stations.minRadioStation = 0;
-        stations.nextRadioStation = stations.changeOnNextRadioStations();
-        System.out.println(stations.nextRadioStation);
+        stations.setMaxRadioStation(9);
+        stations.setCurrentRadioStationNumber(7);
+        stations.setMinRadioStation(0);
+        stations.changeOnNextRadioStations();
+        long expected = 8;
+        assertEquals(expected, stations.getCurrentRadioStationNumber());
+        System.out.println(expected);
     }
 
     @Test
     void changeOnPrevRadioStations() {
         Radio stations = new Radio();
-        stations.currentRadioStationNumber = 0;
-        stations.maxRadioStation = 9;
-        stations.minRadioStation = 0;
-        stations.nextRadioStation = stations.changeOnPrevRadioStations();
-        System.out.println(stations.nextRadioStation);
+        stations.setMaxRadioStation(9);
+        stations.setCurrentRadioStationNumber(7);
+        stations.setMinRadioStation(0);
+        stations.changeOnPrevRadioStations();
+        long expected = 6;
+        assertEquals(expected, stations.getCurrentRadioStationNumber());
+        System.out.println(expected);
     }
 
     //    change volume
     @Test
     void changeVolumeIncrease() {
         Radio stations = new Radio();
-        stations.currentVolume = 10;
-        stations.maxVolume = 10;
-        stations.changeVolumeIncrease = stations.changeVolumeIncrease();
-        System.out.println(stations.changeVolumeIncrease);
+        stations.setMaxVolume(10);
+        stations.setCurrentVolume(5);
+        stations.setMinVolume(0);
+        stations.changeVolumeIncrease();
+        long expected = 6;
+        assertEquals(expected,stations.getCurrentVolume());
+        System.out.println(expected);
     }
 
     @Test
     void changeVolumeDecrease() {
         Radio stations = new Radio();
-        stations.currentVolume = 10;
-        stations.minVolume = 0;
-        stations.changeVolumeDecrease = stations.changeVolumeDecrease();
-        System.out.println(stations.changeVolumeDecrease);
+        stations.setMaxVolume(10);
+        stations.setCurrentVolume(9);;
+        stations.setMinVolume(0);
+        stations.changeVolumeDecrease();
+        long expected = 8;
+        assertEquals(expected,stations.getCurrentVolume());
+        System.out.println(expected);
     }
 }
 
